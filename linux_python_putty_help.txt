@@ -1,0 +1,115 @@
+========Basic and useful Ubuntu Linux commands:========
+https://www.psychz.net/client/blog/en/basic-and-useful-linux-commands-.html
+
+Syntax : ls <options> 
+
+Options:
+-l    create long list
+-a   include hidden directories and files
+-d   list for a specific directory or file
+-R   show complete tree structure
+-h   human readable form
+
+
+ Syntax: cd <path to new directory>
+
+Variations:
+cd        navigate to home directory
+cd ..     navigate back one level
+cd ../..  navigate back two levels
+cd -      navigate to last used directory
+cd ~     Change to root directory
+
+
+Syntax : mkdir <directory name>
+
+Variations:
+mkdir <directory1> <directory2> <directory3>    creates multiple directories at once
+mkdir <directory1>/<directory2>/<directory3>    creates nested directories
+
+ 
+Syntax : rmdir <directory name>
+
+Variations:
+rmdir -p <directory1>/ <directory2> /<directory3>    
+(remove directory with its subsequent  directories)      
+=======apt-get command:=========================
+A simple command line tool, the apt-get command performs the functions of installing, removing, updating and upgrading a package.
+The commands used for these functions:
+
+Installing a package : sudo apt-get install
+
+Removing a package : sudo apt-get remove
+
+Updating a package : sudo apt-get update
+
+Upgrading a package : sudo apt-get upgrade
+
+For information about the command : apt-get help
+==========================
+Check the directories:
+locate apt-get
+
+out:
+ /usr/bin/apt-get
+
+install the file by running the following command:
+sudo dpkg -i apt -xxx.deb
+
+
+============ install python3-pip:============
+sudo apt-get install python3-pip
+sudo apt-get remove python3-pip
+locate pip3
+out:
+/<path>/pip3
+/<path>/pip3.x
+in:
+ln -s /<path>/pip3.x /usr/local/bin/pip3
+
+sudo apt-get install <Package_Name>
+sudo apt-get update
+==============Install pythons2============
+1. sudo apt-get update
+2. sudo apt-get install python
+3. python -V
+==============Install python-scapy-2.4.0============
+before: install pip:
+1. sudo apt install python-pip
+2. pip install scapy
+or
+sudo apt-get install python-scapy
+
+==============copy files putty============
+install:
+sudo apt install putty-tools
+???
+=============Share on Windows and Access It From Linux============
+https://www.howtogeek.com/176471/how-to-share-files-between-windows-and-linux/
+1. Guest Additions provide additional capability to a guest virtual machine, including file sharing
+installing Guest Additions:
+In the guest virtual machine, choose Devices -> Install Guest Additions from the menubar of VirtualBox.
+2. Add user to group  vboxsf:
+sudo adduser <user name> vboxsf
+or
+grep "vboxsf" /etc/group    
+grep "<user name>" /etc/group
+sudo usermod -a -G vboxsf <user name>
+ 
+3. this location could not be displayed - permissiond to view tnr contents of "sf_shared":
+log out
+
+4. create icon:
+ ln -s /media/sf_shared ~host
+or
+sudo mount -t vboxsf -o uid=1000,gid=1000 shared ~/host
+
+5. save icon:
+sudo nano /etc/fstab
+in nano add:
+shared /home/annanet/host vboxsf uid=1000,gid=1000
+ctrl X -> y
+in terminal to run fstab after changing:
+sudo mount -a
+
+======================================
